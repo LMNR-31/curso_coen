@@ -1,0 +1,293 @@
+<sdf version='1.11'>
+  <model name='modelo_carrinho'>
+    <link name='base_link'>
+      <inertial>
+        <pose>0.025000000000000001 0.040000000000000001 0.010125806212033369 0 0 0</pose>
+        <mass>0.050</mass>
+        <inertia>
+          <ixx>0.00033654200544526382</ixx>
+          <ixy>1.084202172485504e-19</ixy>
+          <ixz>2.7105054312137611e-20</ixz>
+          <iyy>0.000148136418544962</iyy>
+          <iyz>0</iyz>
+          <izz>0.00044364998733501968</izz>
+        </inertia>
+      </inertial>
+      <collision name='base_link_collision_collision'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='base_link_visual_visual'>
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/base_link.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.4 0.2 0 1</ambient>
+          <diffuse>0.95 0.45 0 1</diffuse>
+          <specular>0.3 0.3 0.3 1</specular>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_junta_frent_dir' type='revolute'>
+      <pose relative_to='base_link'>0.050000000000000003 0.074999999999999997 0.0050000000000000001 0 -1.5707963267948966 0</pose>
+      <parent>base_link</parent>
+      <child>roda_frent_dir</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <effort>20</effort>
+          <velocity>2.0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>0.10</damping>
+          <friction>0.0</friction>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='roda_frent_dir'>
+      <pose relative_to='base_link_junta_frent_dir'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.7426060594516461e-14 -1.7763568394002511e-17 -0.0050000000000000001 0 0 0</pose>
+        <mass>0.02312015843501232</mass>
+        <inertia>
+          <ixx>8.0679719585504306e-07</ixx>
+          <ixy>-1.863472483959461e-20</ixy>
+          <ixz>-8.4703294725430034e-22</ixz>
+          <iyy>8.0679719523295496e-07</iyy>
+          <iyz>0</iyz>
+          <izz>1.228258417171135e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='roda_frent_dir_collision_collision'>
+        <pose>-0.059999999999999998 -0.10000000000000001 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_frent_dir.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='roda_frent_dir_visual_visual'>
+        <pose>-0.059999999999999998 -0.10000000000000001 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_frent_dir.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.05 0.05 0.05 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.3 0.3 0.3 1</specular>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_junta_frent_esq' type='revolute'>
+      <pose relative_to='base_link'>0 0.074999999999999997 0.0050000000000000001 -3.1415926535897931 -1.5707963267948966 0</pose>
+      <parent>base_link</parent>
+      <child>roda_frent_esq</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <effort>20</effort>
+          <velocity>2.0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>0.10</damping>
+          <friction>0.0</friction>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='roda_frent_esq'>
+      <pose relative_to='base_link_junta_frent_esq'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.7430501486614961e-14 0 -0.0050000000000000001 0 0 0</pose>
+        <mass>0.02312015843501232</mass>
+        <inertia>
+          <ixx>8.0679719585496175e-07</ixx>
+          <ixy>-1.01643953670516e-20</ixy>
+          <ixz>-3.1763735522036258e-22</ixz>
+          <iyy>8.0679719523294924e-07</iyy>
+          <iyz>0</iyz>
+          <izz>1.2282584171710259e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='roda_frent_esq_collision_collision'>
+        <pose>-0.029999999999999999 -0.13 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_frent_esq.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='roda_frent_esq_visual_visual'>
+        <pose>-0.029999999999999999 -0.13 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_frent_esq.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.05 0.05 0.05 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.3 0.3 0.3 1</specular>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_junta_traz_dir' type='revolute'>
+      <pose relative_to='base_link'>0.050000000000000003 0.0050000000000000001 0.0050000000000000001 0 -1.5707963267948966 0</pose>
+      <parent>base_link</parent>
+      <child>roda_traz_dir</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <effort>20</effort>
+          <velocity>2.0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>0.10</damping>
+          <friction>0.0</friction>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='roda_traz_dir'>
+      <pose relative_to='base_link_junta_traz_dir'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.7426060594516461e-14 0 -0.0050000000000000001 0 0 0</pose>
+        <mass>0.02312015843501232</mass>
+        <inertia>
+          <ixx>8.0679719585494819e-07</ixx>
+          <ixy>7.7291756436954906e-21</ixy>
+          <ixz>-8.4703294725430034e-22</ixz>
+          <iyy>8.0679719523295496e-07</iyy>
+          <iyz>8.4703294725430034e-22</iyz>
+          <izz>1.228258417171075e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='roda_traz_dir_collision_collision'>
+        <pose>-0.059999999999999998 -0.13 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_traz_dir.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='roda_traz_dir_visual_visual'>
+        <pose>-0.059999999999999998 -0.13 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_traz_dir.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.05 0.05 0.05 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.3 0.3 0.3 1</specular>
+        </material>
+      </visual>
+    </link>
+    <joint name='base_link_junta_traz_esq' type='revolute'>
+      <pose relative_to='base_link'>0 0.0050000000000000001 0.0050000000000000001 -3.1415926535897931 -1.5707963267948966 0</pose>
+      <parent>base_link</parent>
+      <child>roda_traz_esq</child>
+      <axis>
+        <xyz>0 0 1</xyz>
+        <limit>
+          <lower>-inf</lower>
+          <upper>inf</upper>
+          <effort>20</effort>
+          <velocity>2.0</velocity>
+        </limit>
+        <dynamics>
+          <spring_reference>0</spring_reference>
+          <spring_stiffness>0</spring_stiffness>
+          <damping>0.10</damping>
+          <friction>0.0</friction>
+        </dynamics>
+      </axis>
+    </joint>
+    <link name='roda_traz_esq'>
+      <pose relative_to='base_link_junta_traz_esq'>0 0 0 0 0 0</pose>
+      <inertial>
+        <pose>-1.7430501486614961e-14 -1.7763568394002511e-17 -0.0050000000000000001 0 0 0</pose>
+        <mass>0.02312015843501232</mass>
+        <inertia>
+          <ixx>8.0679719585505068e-07</ixx>
+          <ixy>-2.0434669852509999e-20</ixy>
+          <ixz>-3.1763735522036258e-22</ixz>
+          <iyy>8.0679719523294924e-07</iyy>
+          <iyz>-5.2939559203393771e-22</iyz>
+          <izz>1.228258417171117e-06</izz>
+        </inertia>
+      </inertial>
+      <collision name='roda_traz_esq_collision_collision'>
+        <pose>-0.029999999999999999 -0.10000000000000001 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_traz_esq.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name='roda_traz_esq_visual_visual'>
+        <pose>-0.029999999999999999 -0.10000000000000001 -0.01 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <scale>0.001 0.001 0.001</scale>
+            <uri>meshes/roda_traz_esq.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.05 0.05 0.05 1</ambient>
+          <diffuse>0.1 0.1 0.1 1</diffuse>
+          <specular>0.3 0.3 0.3 1</specular>
+        </material>
+      </visual>
+    </link>
+    <!-- Plugins -->
+    <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+      <joint_name>base_link_junta_frent_dir</joint_name>
+      <topic>/modelo_carrinho/roda_frente_direita_cmd</topic>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+      <joint_name>base_link_junta_frent_esq</joint_name>
+      <topic>/modelo_carrinho/roda_frente_esquerda_cmd</topic>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+      <joint_name>base_link_junta_traz_dir</joint_name>
+      <topic>/modelo_carrinho/roda_traz_direita_cmd</topic>
+    </plugin>
+
+    <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+      <joint_name>base_link_junta_traz_esq</joint_name>
+      <topic>/modelo_carrinho/roda_traz_esquerda_cmd</topic>
+    </plugin>
+  </model>
+</sdf>

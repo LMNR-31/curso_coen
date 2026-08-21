@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="test2">
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.025 0.0375 0.01013441876905105" rpy="0.0 0.0 0.0" />
+            <mass value="0.5733365610433244" />
+            <inertia ixx="0.000278877255356927" iyy="0.0001386503381326861" izz="0.00037911715099229245" ixy="0.0" iyz="-8.131516293641283e-20" ixz="0.0" />
+        </inertial>
+        <visual name="base_link_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="base_link_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="roda1">
+        <inertial>
+            <origin xyz="-1.7426060594516458e-14 -1.7763568394002505e-17 -0.005" rpy="0.0 -0.0 0.0" />
+            <mass value="0.023120158435012316" />
+            <inertia ixx="8.067971958551244e-07" iyy="8.067971952329414e-07" izz="1.228258417171243e-06" ixy="5.082197683525802e-21" iyz="2.710505431213761e-20" ixz="0.0" />
+        </inertial>
+        <visual name="roda1_visual">
+            <origin xyz="-0.025 -0.125 -0.01" rpy="0.0 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/roda1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="roda1_collision">
+            <origin xyz="-0.025 -0.125 -0.01" rpy="0.0 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/roda1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="roda2">
+        <inertial>
+            <origin xyz="-1.744382416291046e-14 -1.7763568394002505e-17 -0.005" rpy="0.0 -0.0 0.0" />
+            <mass value="0.023120158435012316" />
+            <inertia ixx="8.067971958551244e-07" iyy="8.067971952329956e-07" izz="1.2282584171712612e-06" ixy="-8.50209320806504e-20" iyz="-8.470329472543003e-22" ixz="-1.6940658945086007e-21" />
+        </inertial>
+        <visual name="roda2_visual">
+            <origin xyz="-0.055 -0.125 -0.01" rpy="0.0 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/roda2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="roda2_collision">
+            <origin xyz="-0.055 -0.125 -0.01" rpy="0.0 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/roda2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="roda3">
+        <inertial>
+            <origin xyz="1.7426060594516458e-14 1.7763568394002505e-17 -0.005" rpy="0.0 -0.0 0.0" />
+            <mass value="0.023120158435012316" />
+            <inertia ixx="8.067971958550585e-07" iyy="8.067971952329397e-07" izz="1.2282584171711483e-06" ixy="6.45862622281404e-21" iyz="1.0587911840678754e-21" ixz="-3.1763735522036263e-22" />
+        </inertial>
+        <visual name="roda3_visual">
+            <origin xyz="0.025000000000000015 0.1 -0.01" rpy="0.0 -0.0 3.141592653589793" />
+            <geometry>
+                <mesh filename="meshes/roda3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="roda3_collision">
+            <origin xyz="0.025000000000000015 0.1 -0.01" rpy="0.0 -0.0 3.141592653589793" />
+            <geometry>
+                <mesh filename="meshes/roda3.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="roda4">
+        <inertial>
+            <origin xyz="-1.744382416291046e-14 1.7763568394002505e-17 0.005" rpy="0.0 -0.0 0.0" />
+            <mass value="0.023120158435012316" />
+            <inertia ixx="8.067971958550837e-07" iyy="8.067971952329882e-07" izz="1.228258417171148e-06" ixy="3.8963515573697816e-20" iyz="-1.6940658945086007e-21" ixz="3.0704944337968387e-21" />
+        </inertial>
+        <visual name="roda4_visual">
+            <origin xyz="-0.055 0.1 0.01" rpy="3.141592653589793 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/roda4.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="roda4_collision">
+            <origin xyz="-0.055 0.1 0.01" rpy="3.141592653589793 -0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/roda4.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="base_link_Revolucionar-1" type="continuous">
+        <origin xyz="0.05 0.07 0.005" rpy="-0.0 -1.5707963267948966 0" />
+        <parent link="base_link" />
+        <child link="roda1" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+    <joint name="base_link_Revolucionar-2" type="continuous">
+        <origin xyz="0.05 0.005 0.005" rpy="-0.0 -1.5707963267948966 0" />
+        <parent link="base_link" />
+        <child link="roda2" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+    <joint name="base_link_Revolucionar-3" type="continuous">
+        <origin xyz="0.0 0.07 0.005" rpy="-0.0 -1.5707963267948966 0" />
+        <parent link="base_link" />
+        <child link="roda4" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+    <joint name="base_link_Revolucionar-4" type="continuous">
+        <origin xyz="0.0 0.005 0.005" rpy="-3.141592653589793 -1.5707963267948966 0" />
+        <parent link="base_link" />
+        <child link="roda3" />
+        <axis xyz="0.0 0.0 1.0" />
+    </joint>
+</robot>
