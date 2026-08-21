@@ -31,9 +31,9 @@ class WheelController(Node):
         }
         
         self.selected_wheel = '1'
-        self.control_mode = 'individual'  # 'individual', 'tanque', 'virar'
+        self.control_mode = 'individual'  # 'individual', 'sicronizado', 'virar'
         self.virar_velocity = 0.0  # Velocidade de rotação no modo virar
-        self.tanque_velocity = 0.0  # Velocidade linear do tanque
+        self.sicronizado_velocity = 0.0  # Velocidade linear do sicronizado
         
         # Publishers
         self.wheel_pubs = {}
@@ -71,7 +71,7 @@ ESTRUTURA DO ROBÔ:
 
 ═══════════════════════════════════════════════════
 
-MODO: INDIVIDUAL (I) | TANQUE (T) | VIRAR (R)
+MODO: INDIVIDUAL (I) | sicronizado (T) | VIRAR (R)
 
 ═══════════════════════════════════════════════════
 
@@ -87,7 +87,7 @@ MODO INDIVIDUAL:
 
 ───────────────────────────────────────────────────
 
-MODO TANQUE (T):
+MODO sicronizado (T):
   Controla movimento com opção de virar
   W / S  →  Avançar / Retroceder
   A      →  Virar à ESQUERDA (no lugar)
@@ -99,9 +99,9 @@ MODO TANQUE (T):
 
 MODO VIRAR (R):
   Gira no lugar (Direita ↑ Esquerda ↓)
-  W      →  Girar SENTIDO HORÁRIO (Direita frente)
-  S      →  Girar ANTI-HORÁRIO (Esquerda frente)
-  A / D  →  Aumentar / Diminuir velocidade de giro
+  D      →  Girar SENTIDO HORÁRIO (Direita frente)
+  A      →  Girar ANTI-HORÁRIO (Esquerda frente)
+  W / S  →  Aumentar / Diminuir velocidade de giro
   SPACE  →  Parar tudo
 
 ───────────────────────────────────────────────────
@@ -134,10 +134,10 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
         try:
             # Mudar modo
             if key == 't':
-                self.control_mode = 'tanque'
-                self.tanque_velocity = 0.0
-                print("\n🎮 Modo TANQUE ativado (W/S movimento + A/D virar)")
-                self.get_logger().info('Modo: TANQUE')
+                self.control_mode = 'sicronizado'
+                self.sicronizado_velocity = 0.0
+                print("\n🎮 Modo sicronizado ativado (W/S movimento + A/D virar)")
+                self.get_logger().info('Modo: sicronizado')
                 return
             
             elif key == 'r':
@@ -168,8 +168,8 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
             elif self.control_mode == 'individual':
                 self.handle_individual_mode(key)
             
-            elif self.control_mode == 'tanque':
-                self.handle_tanque_mode(key)
+            elif self.control_mode == 'sicronizado':
+                self.handle_sicronizado_mode(key)
             
             elif self.control_mode == 'virar':
                 self.handle_virar_mode(key)
@@ -221,32 +221,32 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
             print("⏹ PARANDO todas as rodas")
             self.publish_all()
     
-    def handle_tanque_mode(self, key):
-        """Modo tanque: movimento + virada"""
+    def handle_sicronizado_mode(self, key):
+        """Modo sicronizado: movimento + virada"""
         if key == 'w':
             # Avançar
-            self.tanque_velocity = min(self.tanque_velocity + self.velocity_step, self.max_velocity)
-            self.wheels['1']['velocity'] = self.tanque_velocity
-            self.wheels['3']['velocity'] = self.tanque_velocity
-            self.wheels['2']['velocity'] = self.tanque_velocity
-            self.wheels['4']['velocity'] = self.tanque_velocity
-            print(f"→ Avançando | Vel: {self.tanque_velocity:+.2f} rad/s")
+            self.sicronizado_velocity = min(self.sicronizado_velocity + self.velocity_step, self.max_velocity)
+            self.wheels['1']['velocity'] = self.sicronizado_velocity
+            self.wheels['3']['velocity'] = self.sicronizado_velocity
+            self.wheels['2']['velocity'] = self.sicronizado_velocity
+            self.wheels['4']['velocity'] = self.sicronizado_velocity
+            print(f"→ Avançando | Vel: {self.sicronizado_velocity:+.2f} rad/s")
             self.publish_all()
         
         elif key == 's':
             # Retroceder
-            self.tanque_velocity = max(self.tanque_velocity - self.velocity_step, -self.max_velocity)
-            self.wheels['1']['velocity'] = self.tanque_velocity
-            self.wheels['3']['velocity'] = self.tanque_velocity
-            self.wheels['2']['velocity'] = self.tanque_velocity
-            self.wheels['4']['velocity'] = self.tanque_velocity
-            print(f"← Retrocedendo | Vel: {self.tanque_velocity:+.2f} rad/s")
+            self.sicronizado_velocity = max(self.sicronizado_velocity - self.velocity_step, -self.max_velocity)
+            self.wheels['1']['velocity'] = self.sicronizado_velocity
+            self.wheels['3']['velocity'] = self.sicronizado_velocity
+            self.wheels['2']['velocity'] = self.sicronizado_velocity
+            self.wheels['4']['velocity'] = self.sicronizado_velocity
+            print(f"← Retrocedendo | Vel: {self.sicronizado_velocity:+.2f} rad/s")
             self.publish_all()
         
         elif key == 'a':
             # Virar à ESQUERDA (esquerda fica mais lenta)
-            esq_vel = self.tanque_velocity * 0.2
-            dir_vel = self.tanque_velocity * 1.5
+            esq_vel = self.sicronizado_velocity * 0.2
+            dir_vel = self.sicronizado_velocity * 1.5
             
             self.wheels['1']['velocity'] = esq_vel
             self.wheels['3']['velocity'] = esq_vel
@@ -257,8 +257,8 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
         
         elif key == 'd':
             # Virar à DIREITA (direita fica mais lenta)
-            esq_vel = self.tanque_velocity * 1.5
-            dir_vel = self.tanque_velocity * 0.2
+            esq_vel = self.sicronizado_velocity * 1.5
+            dir_vel = self.sicronizado_velocity * 0.2
             
             self.wheels['1']['velocity'] = esq_vel
             self.wheels['3']['velocity'] = esq_vel
@@ -269,7 +269,7 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
         
         elif key == 'q':
             # Parar movimento linear
-            self.tanque_velocity = 0.0
+            self.sicronizado_velocity = 0.0
             self.wheels['1']['velocity'] = 0.0
             self.wheels['3']['velocity'] = 0.0
             self.wheels['2']['velocity'] = 0.0
@@ -279,7 +279,7 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
         
         elif key == ' ':
             # Parar tudo
-            self.tanque_velocity = 0.0
+            self.sicronizado_velocity = 0.0
             for k in self.wheels:
                 self.wheels[k]['velocity'] = 0.0
             print("⏹ PARANDO completamente")
@@ -287,7 +287,7 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
     
     def handle_virar_mode(self, key):
         """Modo virar no lugar: Direita frente, Esquerda trás (ou inverso)"""
-        if key == 'w':
+        if key == 'd':
             # Giro horário: Direita frente (2,4), Esquerda trás (1,3)
             self.virar_velocity = min(self.virar_velocity + self.velocity_step, self.max_velocity)
             
@@ -299,7 +299,7 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
             print(f"🔄 Girando HORÁRIO (Direita→) | Vel: {self.virar_velocity:+.2f} rad/s")
             self.publish_all()
         
-        elif key == 's':
+        elif key == 'a':
             # Giro anti-horário: Esquerda frente (1,3), Direita trás (2,4)
             self.virar_velocity = min(self.virar_velocity + self.velocity_step, self.max_velocity)
             
@@ -311,7 +311,7 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
             print(f"🔄 Girando ANTI-HORÁRIO (←Esquerda) | Vel: {self.virar_velocity:+.2f} rad/s")
             self.publish_all()
         
-        elif key == 'a':
+        elif key == 'w':
             # Aumentar velocidade de giro
             self.virar_velocity = min(self.virar_velocity + self.velocity_step, self.max_velocity)
             
@@ -330,7 +330,7 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
             
             self.publish_all()
         
-        elif key == 'd':
+        elif key == 's':
             # Diminuir velocidade de giro
             self.virar_velocity = max(self.virar_velocity - self.velocity_step, 0.0)
             
@@ -385,7 +385,7 @@ PRESSIONE UMA TECLA PARA COMEÇAR...
     def show_velocities(self):
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, self.settings)
         
-        mode_str = "INDIVIDUAL" if self.control_mode == 'individual' else ("TANQUE" if self.control_mode == 'tanque' else "VIRAR")
+        mode_str = "INDIVIDUAL" if self.control_mode == 'individual' else ("sicronizado" if self.control_mode == 'sicronizado' else "VIRAR")
         
         print("\n╔" + "═" * 68 + "╗")
         print("║" + f" VELOCIDADES ATUAIS (Mode: {mode_str}) ".center(68) + "║")

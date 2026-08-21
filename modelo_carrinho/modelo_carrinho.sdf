@@ -100,7 +100,7 @@
       <parent>base_link</parent>
       <child>roda_frent_esq</child>
       <axis>
-        <xyz>0 0 1</xyz>
+        <xyz>0 0 -1</xyz>
         <limit>
           <lower>-inf</lower>
           <upper>inf</upper>
@@ -216,7 +216,7 @@
       <parent>base_link</parent>
       <child>roda_traz_esq</child>
       <axis>
-        <xyz>0 0 1</xyz>
+        <xyz>0 0 -1</xyz>
         <limit>
           <lower>-inf</lower>
           <upper>inf</upper>
