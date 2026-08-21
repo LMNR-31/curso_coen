@@ -52,7 +52,7 @@
   
   <include>
     <uri>
-      file:///home/~/curso_coen_ws/src/modelo_carrinho/modelo_carrinho.sdf
+      file://../modelo_carrinho/modelo_carrinho.sdf
     </uri>
 
     <pose>0 0 1 0 0 0</pose>
