@@ -32,8 +32,8 @@ gz sdf -p meu_robo.urdf > meu_robo.sdf
 
 ```xml
 <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
-  <joint_name>base_link_junta_frent_dir</joint_name>
-  <topic>/modelo_carrinho/roda_frente_direita_cmd</topic>
+  <joint_name>nome_da_junta</joint_name>
+  <topic>/nome_do_robo/nome_da_roda_cmd</topic>
 </plugin>
 ```
 
