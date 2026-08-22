@@ -1,0 +1,41 @@
+ source /opt/ros/jazzy/setup.bash
+ colcon build
+ source install/setup.bash
+ cd ~/curso_coen_ws/src/nome_do_robo
+ gz sdf -p meu_robo.urdf > meu_robo.sdf
+
+# material
+    <material> ← coloque aqui
+          <ambient>0.4 0 0 1</ambient>
+          <diffuse>0.85 0 0 1</diffuse>
+          <specular>0.3 0.3 0.3 1</specular>
+    </material>
+# plugins
+    <plugin filename="gz-sim-joint-controller-system" name="gz::sim::systems::JointController">
+        <joint_name>base_link_junta_frent_dir</joint_name>
+        <topic>/modelo_carrinho/roda_frente_direita_cmd</topic>
+    </plugin>
+# liminti
+        <effort>20</effort> ← torque máximo
+        <velocity>2.0</velocity> ← velocidade máxima
+# dinâmica
+        <damping>0.10</damping> ← amortecimento
+        <friction>0.0</friction> ← atrito 
+
+# Terminal 1 – Gazebo
+ cd ~/curso_coen_ws/src/nome_do_robo
+ gz sim worlds/curso_coen_worlds.sdf
+
+# Terminal 2 – Bridge 
+      ros2 run ros_gz_bridge parameter_bridge /
+/modelo_carrinho/roda_frente_direita_cmd@std_msgs/msg/Float64@gz.msgs.Double /
+/modelo_carrinho/roda_frente_esquerda_cmd@std_msgs/msg/Float64@gz.msgs.Double /
+/modelo_carrinho/roda_traz_direita_cmd@std_msgs/msg/Float64@gz.msgs.Double   /
+/modelo_carrinho/roda_traz_esquerda_cmd@std_msgs/msg/Float64@gz.msgs.Double
+
+# Terminal 3 – Controller
+ 
+  cd ~/curso_coen_ws
+  colcon build 
+  source install/setup.bash
+  ros2 run wheel_robot_controller wheel_controller.py
