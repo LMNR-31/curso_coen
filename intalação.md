@@ -85,4 +85,13 @@ abrir
 code
 ```
 
+# erro 
 
+```bash
+sudo apt update
+sudo apt upgrade -y
+``
+
+```bash 
+sudo reboot 
+```
