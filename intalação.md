@@ -37,6 +37,8 @@ sudo dpkg -i /tmp/ros2-apt-source.deb
 ```
 
 ```bash
+sudo apt update
+sudo apt upgrade
 sudo apt install -y ros-jazzy-desktop
 
 ```
