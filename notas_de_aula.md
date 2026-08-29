@@ -89,3 +89,12 @@ ros2 run wheel_robot_controller wheel_controller.py
 - Após `colcon build`, rode `source install/setup.bash` no terminal atual.
 - Verifique se os nomes das juntas e tópicos no SDF batem com os tópicos da bridge.
 - Se algo não responder, confira se os 3 terminais estão ativos e sem erro.
+
+
+
+
+#intalação
+```bash
+sudo apt install -y ros-jazzy-ros-gz-bridge ros-jazzy-ros-gz-sim
+```
+
