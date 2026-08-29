@@ -93,8 +93,13 @@ ros2 run wheel_robot_controller wheel_controller.py
 
 
 
-#intalação
+# intalação
 ```bash
 sudo apt install -y ros-jazzy-ros-gz-bridge ros-jazzy-ros-gz-sim
 ```
+```bash
+sudo apt update
+sudo apt install python3-colcon-common-extensions -y
+```
+
 
